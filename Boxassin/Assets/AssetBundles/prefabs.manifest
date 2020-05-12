@@ -1,0 +1,58 @@
+ManifestFileVersion: 0
+CRC: 1354307243
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 207149f7da7387464544cc807244ccc5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2daa466c4469e8b37df96dffbcc0a068
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 20
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8d196502ee09c434db56e690fc053dfe, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1cec05c067f7b1a4ead3159e8a3221b6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 81179a1fd62121a4e84ee14fbdb24d37, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 195
+  Script: {instanceID: 0}
+- Class: 208
+  Script: {instanceID: 0}
+Assets:
+- Assets/BundleResource/Prefabs/Obstacle.prefab
+- Assets/BundleResource/Prefabs/Player.prefab
+- Assets/BundleResource/Prefabs/Sector.prefab
+- Assets/BundleResource/Prefabs/Guard.prefab
+- Assets/BundleResource/Prefabs/Gimmick.prefab
+- Assets/BundleResource/Prefabs/Target.prefab
+- Assets/BundleResource/Prefabs/TargetGen.prefab
+- Assets/BundleResource/Prefabs/GuardGen.prefab
+- Assets/BundleResource/Prefabs/PlayerGen.prefab
+Dependencies: []

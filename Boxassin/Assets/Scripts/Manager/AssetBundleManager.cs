@@ -10,12 +10,12 @@ public class BundleInfo {
     public int m_Version;
     public AssetBundle m_AssetBundle;
 }
-public class AssetBundleManager : MonoBehaviour
+public class AssetBundleManager : DeleteSingleton<AssetBundleManager>
 {
-    bool b_AllLoad;
+    public bool b_AllLoad, b_SetPrefabs, b_SetEffect, b_SetSound, b_AllSet;
     public BundleInfo[] arr_BundleInfo;
     public Dictionary<string, BundleInfo> arr_AssetBundles = new Dictionary<string, BundleInfo>();
-    public List<GameObject> arr_Prefabs = new List<GameObject>();
+    public Dictionary<string, GameObject> arr_Prefabs = new Dictionary<string, GameObject>();
 
     private void Start() {
         StartCoroutine(DownloadNCache());
@@ -47,17 +47,17 @@ public class AssetBundleManager : MonoBehaviour
         StartCoroutine(LoadPrefabs());
         StartCoroutine(LoadSound());
         StartCoroutine(LoadEffect());
+
+        yield return new WaitUntil(() => b_SetPrefabs && b_SetEffect && b_SetSound == true);
+        b_AllSet = true;
     }
     IEnumerator LoadPrefabs() {
-        for (int i = 0; i < 3; i++) {
-            AssetBundleRequest request = arr_AssetBundles["prefabs"].m_AssetBundle.LoadAssetAsync("BOX" + (i + 1).ToString(), typeof(GameObject));
-            yield return request;
-
-            arr_Prefabs.Add(request.asset as GameObject);
-
-            GameObject obj = Instantiate(arr_Prefabs[i]);
-            obj.transform.position = new Vector3(-10f + i * 10f, 0f, 0f);
+        AssetBundleRequest request = arr_AssetBundles["prefabs"].m_AssetBundle.LoadAllAssetsAsync();
+        yield return request;
+        for (int i = 0; i < request.allAssets.Length; i++) {
+            arr_Prefabs.Add(request.allAssets[i].name, request.allAssets[i] as GameObject);
         }
+        b_SetPrefabs = true;
     }
     IEnumerator LoadSound() {
         for(int i = 0; i < SoundPlayManager.Instance.m_ClipsName.Length; i++) {
@@ -66,8 +66,7 @@ public class AssetBundleManager : MonoBehaviour
 
             SoundPlayManager.Instance.arr_AudioClip.Add(SoundPlayManager.Instance.m_ClipsName[i], request.asset as AudioClip);
         }
-
-        SoundPlayManager.Instance.EffectSound("01. The Weeknd - Blinding Lights");
+        b_SetSound = true;
     }
     IEnumerator LoadEffect() {
         for (int i = 0; i < EffectManager.Instance.arr_EffectsName.Length; i++) {
@@ -76,6 +75,6 @@ public class AssetBundleManager : MonoBehaviour
 
             EffectManager.Instance.arr_Effects.Add(EffectManager.Instance.arr_EffectsName[i], request.asset as GameObject);
         }
-        EffectManager.Instance.EffectTurnOn("CFX_Hit_C White", new Vector3(0,5,0), Vector3.one);
+        b_SetEffect = true;
     }
 }

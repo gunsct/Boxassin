@@ -1,0 +1,25 @@
+ManifestFileVersion: 0
+CRC: 1023586505
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: df0b9a2751186b2e3edf7166d9f7cb2f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: d45ed4358409bd8586b26fb0b95c04d4
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6fd2e8874f60266498a388d7229a1bac, type: 3}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/BundleResource/Effect/CFX_Hit_A Red+RandomText.prefab
+- Assets/BundleResource/Effect/CFX_Hit_C White.prefab
+Dependencies: []
